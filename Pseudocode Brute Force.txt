@@ -1,0 +1,24 @@
+
+Pseudocode for Brute Force Method:
+
+	IF M is the number of keys
+	  set of keys [0...M+2}
+	    position of keys [0...M+2]
+        FOR i = 1 to M
+	  IF keys[i] = 1
+	   set of keys [j] = position of keys[j] = keys[i]
+		j++
+	         j = 0
+       FOR j = 1 TO T
+	  IF  set of keys[j] - balls[i] less than the set of keys[j+1] - ball[i]
+		minSum = minSum + the set of keys[j] - balls[i]
+		  the position of keys[j] = balls[i]
+	  ELSE minSum = minSum + the set of keys[j+1] - balls[i]
+	  the position of keys[j+1] = max of balls[i] and the subset of keys[i+1]
+	   
+	WHILE loop balls[i+1] less or equal than the set of keys[j+1]
+	INCREMENT i;
+      INCREMENT j;
+	
+return minSum;
+	

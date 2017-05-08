@@ -1,0 +1,39 @@
+Pseudocode for Dynamic Programming:
+
+    solveKeyProblem(string keyString, N, M, T, keys, balls)
+        IF keyString.length = M
+            keySet = int [0 ... M + 2]
+            keyPos = int [0 ... M + 2]
+            
+            INITIALIZE keySet[0] and keyPos[0] to 9999;
+            
+            
+            FOR i = 1 to M
+                if keyString[i] = 1
+                    keySet[j] = keyPos[j] = keys[i]
+                    j++;
+            
+            keySet[j] = keyPos[j] = 9999;
+            INITIALIZE j to 0;
+            
+            FOR i = 1 to T
+                IF |keySet[j] - balls[i]| < |keySet[j+1] - balls[i]|
+                    minSum += |keySet[j] - balls[i]|
+                    keyPos[j] = balls[i]
+                ELSE
+                    minSum += |keySet[j+1] - balls[i]|
+                    keyPos[j+1] = max{balls[i], keySet[j+1]}
+                    WHILE balls[i+1] <= keySet[j+1]
+                        INCREMENT i;
+                    INCREMENT j;
+            
+            return minSum;
+        ELSE
+            RETURN MINIMUM OF {solveKeyProblem(keyString + "0", N, M, T, keys, balls), CALL solveKeyProblem(keyString + "1", N, M, T, keys, balls)}
+
+
+
+
+
+    
+    
